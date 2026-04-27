@@ -2,10 +2,10 @@ import React from 'react'
 
 const HomePage = () => {
     return (
-        <main>
-            <div className="container ">
-               <div className="sec_padding">
-                 <p className='text-5xl font-bold'>HomePage</p>
+        <main className='bg-amber-200 sec_padding'>
+            <div className="container bg-amber-400 ">
+               <div className="">
+                 <p className='text-5xl font-bold bg-amber-900'>HomePage</p>
                </div>
             </div>
         </main>
