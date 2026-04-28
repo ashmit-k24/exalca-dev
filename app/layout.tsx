@@ -3,6 +3,7 @@ import { Inter, Geist } from "next/font/google";
 import "@/styles/globals.scss";
 import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
+import Navbar from "@/components/Organisms/Navbar/Navbar";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("h-full antialiased", "font-sans", geist.variable)} suppressHydrationWarning>
       <body className={inter.className}>
+        <Navbar/>
         {children}
       </body>
     </html>

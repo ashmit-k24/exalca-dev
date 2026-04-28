@@ -1,0 +1,266 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { AccountPayableAutomation } from "@/components/Atoms/svgComponents/AccountPayableAutomation";
+import { BusinessPartnerOnboardingPortal } from "@/components/Atoms/svgComponents/BusinessPartnerOnboardingPortal";
+import { DataCleansingOptimization } from "@/components/Atoms/svgComponents/DataCleansingOptimization";
+import { DataEnrichment } from "@/components/Atoms/svgComponents/DataEnrichment";
+import { DigitalSignatureCockpit } from "@/components/Atoms/svgComponents/DigitalSignatureCockpit";
+import { EInvoicingEWayBillSolution } from "@/components/Atoms/svgComponents/EInvoicingEWayBillSolution";
+import { FinancialReconciliation } from "@/components/Atoms/svgComponents/FinancialReconciliation";
+import { ForwardReverseAuctioning } from "@/components/Atoms/svgComponents/ForwardReverseAuctioning";
+import { GateEntryExit } from "@/components/Atoms/svgComponents/GateEntryExit";
+import { MasterDataAsAService } from "@/components/Atoms/svgComponents/MasterDataAsAService";
+import { MasterDataSolutionForSAP } from "@/components/Atoms/svgComponents/MasterDataSolutionForSAP";
+import { P2PSuiteForSAP } from "@/components/Atoms/svgComponents/P2PSuiteForSAP";
+import { PostProcurementPortal } from "@/components/Atoms/svgComponents/PostProcurementPortal";
+import { PreProcurementPortal } from "@/components/Atoms/svgComponents/PreProcurementPortal";
+import { ShiftHandover } from "@/components/Atoms/svgComponents/ShiftHandover";
+import { MobileWarehouseManagementSystem } from "@/components/Atoms/svgComponents/MobileWarehouseManagementSystem";
+import { BusinessTransformationServices } from "@/components/Atoms/svgComponents/BusinessTransformationServices";
+import { RapidDeployment } from "@/components/Atoms/svgComponents/RapidDeployment";
+import { ApplicationIntegrationServicesWithSAPCPI } from "@/components/Atoms/svgComponents/ApplicationIntegrationServicesWithSAPCPI";
+import { CustomDevelopment } from "@/components/Atoms/svgComponents/CustomDevelopment";
+const navLinkClass =
+  "relative inline-flex h-14 items-center px-3 text-[15px] font-medium text-slate-900 transition-colors hover:text-[#2e19b9] focus-visible:outline-none after:absolute after:bottom-3 after:left-3 after:h-0.5 after:w-[calc(100%-1.5rem)] after:origin-left after:scale-x-0 after:bg-[#7ac943] after:transition-transform after:duration-200";
+
+const topLinks = [
+  { title: "Home", href: "/" },
+  { title: "Case Study", href: "/case-study" },
+  { title: "About Us", href: "/about-us" },
+  { title: "Career", href: "/career" },
+  { title: "Contact Us", href: "/contact-us" },
+] as const;
+
+const solutionGroups = [
+  {
+    title: "Data Optimization",
+    items: [
+      { name: "Master Data Solution for SAP", icon: MasterDataSolutionForSAP },
+      { name: "Data Cleansing & Optimization", icon: DataCleansingOptimization },
+      { name: "Data Enrichment", icon: DataEnrichment },
+    ],
+  },
+  {
+    title: "Partner Collaboration",
+    items: [
+      { name: "Business Partner Onboarding Portal", icon: BusinessPartnerOnboardingPortal },
+      { name: "Pre-Procurement Portal", icon: PreProcurementPortal },
+      { name: "Post Procurement Portal", icon: PostProcurementPortal },
+      { name: "Forward / Reverse Auctioning", icon: ForwardReverseAuctioning },
+    ],
+  },
+  {
+    title: "Process Optimization",
+    items: [
+      { name: "Account Payable Automation", icon: AccountPayableAutomation },
+      { name: "P2P Suite For SAP", icon: P2PSuiteForSAP },
+      { name: "Financial Reconciliation", icon: FinancialReconciliation },
+      { name: "Mobile Warehouse Management System", icon: MobileWarehouseManagementSystem },
+    ],
+  },
+  {
+    title: "Process Automation",
+    items: [
+      { name: "Digital Signature Cockpit", icon: DigitalSignatureCockpit },
+      { name: "E-Invoicing / E-Way Bill Solution", icon: EInvoicingEWayBillSolution },
+      { name: "Gate Entry - Exit", icon: GateEntryExit },
+      { name: "Shift Handover", icon: ShiftHandover },
+    ],
+  },
+];
+
+const serviceItems = [
+  {
+    name: "Business Transformation Services",
+    icon: BusinessTransformationServices,
+  },
+  {
+    name: "Rapid Deployment & BTP Applications for SAP",
+    icon: RapidDeployment,
+  },
+  {
+    name: "Master Data As A Service (MDAAS)",
+    icon: MasterDataAsAService,
+  },
+  {
+    name: "Application Integration Services with SAP CPI",
+    icon: ApplicationIntegrationServicesWithSAPCPI,
+  },
+  {
+    name: "Custom Development",
+    icon: CustomDevelopment,
+  },
+  {
+    name: "Platform & Technology Integration Services",
+    icon: GateEntryExit,
+  },
+  {
+    name: "Staff Augmentation",
+    icon: GateEntryExit,
+  },
+  {
+    name: "Application Management Services (AMS)",
+    icon: GateEntryExit,
+  },
+] as const;
+
+function isActivePath(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname.startsWith(href);
+}
+
+function MegaMenuSection({
+  title,
+  items,
+}: {
+  title: string;
+  items: { name: string; icon: React.ElementType }[];
+}) {
+  return (
+    <div className="space-y-5">
+      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">
+        <span>{title}</span>
+      </div>
+      <div className="space-y-4">
+        {items.map((item) => (
+          <div key={item.name} className="flex items-center gap-3 text-[15px] font-medium text-slate-900">
+            <item.icon className="shrink-0" />
+            <span>{item.name}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function DropdownTrigger({
+  label,
+  active,
+}: {
+  label: string;
+  active: boolean;
+}) {
+  return (
+    <NavigationMenuTrigger
+      className={cn(
+        navLinkClass,
+        "h-14 rounded-none bg-transparent px-3 py-0 hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-[#2e19b9]",
+        "after:bg-[#7ac943] hover:after:scale-x-100 data-[state=open]:after:scale-x-100",
+        active && "text-[#2e19b9] after:scale-x-100"
+      )}
+    >
+      {label}
+    </NavigationMenuTrigger>
+  );
+}
+
+const megaMenuClass =
+  "absolute left-1/2 top-full z-50 mt-3 w-[min(92vw,960px)] -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-8 shadow-[0_28px_80px_rgba(15,23,42,0.14)] before:absolute before:-top-2 before:left-1/2 before:size-4 before:-translate-x-1/2 before:rotate-45 before:border-l before:border-t before:border-slate-200 before:bg-white";
+
+const Navlinks = () => {
+  const pathname = usePathname();
+  const solutionsActive = pathname.startsWith("/solutions");
+  const servicesActive = pathname.startsWith("/services");
+
+  return (
+    <div className="flex items-center gap-6">
+      <NavigationMenu viewport={false} className="flex-none w-full">
+        <NavigationMenuList className="gap-1">
+          {topLinks.slice(0, 1).map((link) => (
+            <NavigationMenuItem key={link.href}>
+              <Link
+                href={link.href}
+                className={cn(
+                  navLinkClass,
+                  "hover:after:scale-x-100",
+                  isActivePath(pathname, link.href) && "text-[#2e19b9] after:scale-x-100"
+                )}
+              >
+                {link.title}
+              </Link>
+            </NavigationMenuItem>
+          ))}
+
+          <NavigationMenuItem>
+            <DropdownTrigger label="Solutions" active={solutionsActive} />
+            <NavigationMenuContent className={megaMenuClass}>
+              <div className="grid gap-8 md:grid-cols-2">
+                {solutionGroups.map((group) => (
+                  <MegaMenuSection key={group.title} {...group} />
+                ))}
+              </div>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+
+          <NavigationMenuItem>
+            <DropdownTrigger label="Services" active={servicesActive} />
+            <NavigationMenuContent className={cn(megaMenuClass, "w-[min(92vw,860px)]")}>
+              <div className="grid gap-x-10 gap-y-5 md:grid-cols-2">
+                {serviceItems.map((item) => (
+                  <NavigationMenuLink
+                    key={item.name}
+                    className="rounded-xl border border-transparent px-0 py-2 hover:bg-transparent data-active:bg-transparent"
+                  >
+                    <div className="flex items-start gap-3">
+                      <item.icon className="mt-1 shrink-0" />
+                      <div className="space-y-1">
+                        <div className="text-[15px] font-medium text-slate-900">{item.name}</div>
+                        <div className="text-sm text-slate-500">
+                          Tailored SAP-focused delivery with measurable business impact.
+                        </div>
+                      </div>
+                    </div>
+                  </NavigationMenuLink>
+                ))}
+              </div>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+
+          {topLinks.slice(1).map((link) => (
+            <NavigationMenuItem key={link.href}>
+              <Link
+                href={link.href}
+                className={cn(
+                  navLinkClass,
+                  "hover:after:scale-x-100",
+                  isActivePath(pathname, link.href) && "text-[#2e19b9] after:scale-x-100"
+                )}
+              >
+                {link.title}
+              </Link>
+            </NavigationMenuItem>
+          ))}
+        </NavigationMenuList>
+      </NavigationMenu>
+
+      <div className="flex items-center gap-3">
+        <Button
+          asChild
+          className="h-10 rounded-xl border border-[#56d26f] bg-[#2e19b9] px-5 text-sm font-semibold text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] hover:bg-[#24139a]"
+        >
+          <Link href="/schedule-demo">Schedule Demo</Link>
+        </Button>
+        <Button
+          asChild
+          className="h-10 rounded-xl border border-[#56d26f] bg-[#2e19b9] px-5 text-sm font-semibold text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] hover:bg-[#24139a]"
+        >
+          <Link href="/ess">ESS</Link>
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default Navlinks;
