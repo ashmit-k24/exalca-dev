@@ -5,7 +5,7 @@ type IconProps = React.SVGProps<SVGSVGElement> & {
 };
 
 export function MasterDataSolutionForSAP({
-  size = 24,
+  size = 20,
   ...props
 }: IconProps) {
   return (

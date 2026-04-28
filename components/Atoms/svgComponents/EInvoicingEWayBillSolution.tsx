@@ -1,12 +1,20 @@
+
+
 import * as React from "react";
 
-export function EInvoicingEWayBillSolution(
-  props: React.SVGProps<SVGSVGElement>,
-) {
+type IconProps = React.SVGProps<SVGSVGElement> & {
+  size?: number;
+  strokeWidth?: number;
+};
+
+export function EInvoicingEWayBillSolution({
+  size = 20,
+  ...props
+}: IconProps) {
   return (
     <svg
-      width={24}
-      height={24}
+      width={size}
+      height={size}
       viewBox="0 0 22 22"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

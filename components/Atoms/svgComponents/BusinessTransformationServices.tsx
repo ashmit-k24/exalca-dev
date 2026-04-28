@@ -8,7 +8,7 @@ type IconProps = React.SVGProps<SVGSVGElement> & {
 };
 
 export function BusinessTransformationServices({
-    size = 24,
+    size = 20,
     ...props
 }: IconProps) {
     return (

@@ -7,11 +7,12 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { DropdownTrigger } from "./DropdownTrigger";
+import { MegaMenuSection } from "./MegaMenuSection";
 import { AccountPayableAutomation } from "@/components/Atoms/svgComponents/AccountPayableAutomation";
 import { BusinessPartnerOnboardingPortal } from "@/components/Atoms/svgComponents/BusinessPartnerOnboardingPortal";
 import { DataCleansingOptimization } from "@/components/Atoms/svgComponents/DataCleansingOptimization";
@@ -35,7 +36,7 @@ import { CustomDevelopment } from "@/components/Atoms/svgComponents/CustomDevelo
 import { PlatformTechnologyIntegrationServices } from "@/components/Atoms/svgComponents/PlatformTechnologyIntegrationServices";
 import { StaffAugmentation } from "@/components/Atoms/svgComponents/StaffAugmentation";
 import { ApplicationManagementServices } from "@/components/Atoms/svgComponents/ApplicationManagementServices";
-const navLinkClass =
+export const navLinkClass =
   "relative inline-flex h-14 items-center px-3 text-[15px] font-medium text-slate-900 transition-colors hover:text-[#2e19b9] focus-visible:outline-none after:absolute after:bottom-3 after:left-3 after:h-0.5 after:w-[calc(100%-1.5rem)] after:origin-left after:scale-x-0 after:bg-[#7ac943] after:transition-transform after:duration-200";
 
 const topLinks = [
@@ -88,34 +89,42 @@ const serviceItems = [
   {
     name: "Business Transformation Services",
     icon: BusinessTransformationServices,
+    description: "Modernize operations with digital-first solutions",
   },
   {
     name: "Rapid Deployment & BTP Applications for SAP",
     icon: RapidDeployment,
+    description: "Go live faster with ready-to-use SAP extensions",
   },
   {
     name: "Master Data As A Service (MDAAS)",
     icon: MasterDataAsAService,
+    description: "Ensure accurate, consistent, and reliable data",
   },
   {
     name: "Application Integration Services with SAP CPI",
     icon: ApplicationIntegrationServicesWithSAPCPI,
+    description: "Secure cloud-based process integration hub",
   },
   {
     name: "Custom Development",
     icon: CustomDevelopment,
+    description: "Tailored solutions built for your business",
   },
   {
     name: "Platform & Technology Integration Services",
     icon: PlatformTechnologyIntegrationServices,
+    description: "Connect systems for seamless data flow",
   },
   {
     name: "Staff Augmentation",
     icon: StaffAugmentation,
+    description: "Scale your teams with skilled technology experts",
   },
   {
     name: "Application Management Services (AMS)",
     icon: ApplicationManagementServices,
+    description: "Ensure stability, performance, and continuity",
   },
 ] as const;
 
@@ -124,50 +133,6 @@ function isActivePath(pathname: string, href: string) {
   return pathname.startsWith(href);
 }
 
-function MegaMenuSection({
-  title,
-  items,
-}: {
-  title: string;
-  items: { name: string; icon: React.ElementType }[];
-}) {
-  return (
-    <div className="space-y-5">
-      <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-slate-400">
-        <span>{title}</span>
-      </div>
-      <div className="space-y-4">
-        {items.map((item) => (
-          <div key={item.name} className="flex items-center gap-3 text-[15px] font-medium text-slate-900">
-            <item.icon className="shrink-0" />
-            <span>{item.name}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function DropdownTrigger({
-  label,
-  active,
-}: {
-  label: string;
-  active: boolean;
-}) {
-  return (
-    <NavigationMenuTrigger
-      className={cn(
-        navLinkClass,
-        "h-14 rounded-none bg-transparent px-3 py-0 hover:bg-transparent focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-[#2e19b9]",
-        "after:bg-[#7ac943] hover:after:scale-x-100 data-[state=open]:after:scale-x-100",
-        active && "text-[#2e19b9] after:scale-x-100"
-      )}
-    >
-      {label}
-    </NavigationMenuTrigger>
-  );
-}
 
 const megaMenuClass =
   "absolute left-1/2 top-full z-50 mt-3 w-[min(92vw,960px)] -translate-x-1/2 rounded-2xl border border-slate-200 bg-white p-8 shadow-[0_28px_80px_rgba(15,23,42,0.14)] before:absolute before:-top-2 before:left-1/2 before:size-4 before:-translate-x-1/2 before:rotate-45 before:border-l before:border-t before:border-slate-200 before:bg-white";
@@ -188,7 +153,7 @@ const Navlinks = () => {
                 className={cn(
                   navLinkClass,
                   "hover:after:scale-x-100",
-                  isActivePath(pathname, link.href) && "text-[#2e19b9] after:scale-x-100"
+                  isActivePath(pathname, link.href) && "text-primary after:scale-x-100"
                 )}
               >
                 {link.title}
@@ -217,14 +182,15 @@ const Navlinks = () => {
                     className="rounded-xl border border-transparent px-0 py-2 hover:bg-transparent data-active:bg-transparent"
                   >
                     <div className="flex items-start gap-3">
-                      <item.icon className="mt-1 shrink-0" />
+                      <item.icon size={20} className="shrink-0 mt-1 size-6" />
                       <div className="space-y-1">
                         <div className="text-[15px] font-medium text-slate-900">{item.name}</div>
                         <div className="text-sm text-slate-500">
-                          Tailored SAP-focused delivery with measurable business impact.
+                          {item.description}
                         </div>
                       </div>
                     </div>
+
                   </NavigationMenuLink>
                 ))}
               </div>

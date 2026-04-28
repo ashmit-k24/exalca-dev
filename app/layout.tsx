@@ -5,7 +5,7 @@ import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/Organisms/Navbar/Navbar";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ['latin'], variable: '--font-sans' });
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,9 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("h-full antialiased", "font-sans", geist.variable)} suppressHydrationWarning>
-      <body className={inter.className}>
-        <Navbar/>
+    <html lang="en" className={cn("h-full antialiased", "font-sans", geist.variable)} >
+      <body className={inter.className} suppressHydrationWarning>
+        <Navbar />
         {children}
       </body>
     </html>
