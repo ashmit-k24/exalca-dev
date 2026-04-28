@@ -1,12 +1,11 @@
 import React from "react";
+import OurExcellence from "../Organisms/HomePage/OurExcellence";
 
 const HomePage = () => {
   return (
-    <section className="sec_padding">
-      <div className="container">
-        <p className="text-5xl font-bold">HomePage</p>
-      </div>
-    </section>
+    <>
+      <OurExcellence />
+    </>
   );
 };
 
