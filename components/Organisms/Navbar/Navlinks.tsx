@@ -32,6 +32,9 @@ import { BusinessTransformationServices } from "@/components/Atoms/svgComponents
 import { RapidDeployment } from "@/components/Atoms/svgComponents/RapidDeployment";
 import { ApplicationIntegrationServicesWithSAPCPI } from "@/components/Atoms/svgComponents/ApplicationIntegrationServicesWithSAPCPI";
 import { CustomDevelopment } from "@/components/Atoms/svgComponents/CustomDevelopment";
+import { PlatformTechnologyIntegrationServices } from "@/components/Atoms/svgComponents/PlatformTechnologyIntegrationServices";
+import { StaffAugmentation } from "@/components/Atoms/svgComponents/StaffAugmentation";
+import { ApplicationManagementServices } from "@/components/Atoms/svgComponents/ApplicationManagementServices";
 const navLinkClass =
   "relative inline-flex h-14 items-center px-3 text-[15px] font-medium text-slate-900 transition-colors hover:text-[#2e19b9] focus-visible:outline-none after:absolute after:bottom-3 after:left-3 after:h-0.5 after:w-[calc(100%-1.5rem)] after:origin-left after:scale-x-0 after:bg-[#7ac943] after:transition-transform after:duration-200";
 
@@ -104,15 +107,15 @@ const serviceItems = [
   },
   {
     name: "Platform & Technology Integration Services",
-    icon: GateEntryExit,
+    icon: PlatformTechnologyIntegrationServices,
   },
   {
     name: "Staff Augmentation",
-    icon: GateEntryExit,
+    icon: StaffAugmentation,
   },
   {
     name: "Application Management Services (AMS)",
-    icon: GateEntryExit,
+    icon: ApplicationManagementServices,
   },
 ] as const;
 
