@@ -1,1 +1,0 @@
-this is just a sample file to get the git tracking for Folders so that empty folders will stay there
