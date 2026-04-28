@@ -51,36 +51,36 @@ const solutionGroups = [
   {
     title: "Data Optimization",
     items: [
-      { name: "Master Data Solution for SAP", icon: MasterDataSolutionForSAP },
-      { name: "Data Cleansing & Optimization", icon: DataCleansingOptimization },
-      { name: "Data Enrichment", icon: DataEnrichment },
+      { name: "Master Data Solution for SAP", href: "/solutions/master-data-solution-for-sap", icon: MasterDataSolutionForSAP },
+      { name: "Data Cleansing & Optimization", href: "/solutions/data-cleansing-optimization", icon: DataCleansingOptimization },
+      { name: "Data Enrichment", href: "/solutions/data-enrichment", icon: DataEnrichment },
     ],
   },
   {
     title: "Partner Collaboration",
     items: [
-      { name: "Business Partner Onboarding Portal", icon: BusinessPartnerOnboardingPortal },
-      { name: "Pre-Procurement Portal", icon: PreProcurementPortal },
-      { name: "Post Procurement Portal", icon: PostProcurementPortal },
-      { name: "Forward / Reverse Auctioning", icon: ForwardReverseAuctioning },
+      { name: "Business Partner Onboarding Portal", href: "/solutions/business-partner-onboarding-portal", icon: BusinessPartnerOnboardingPortal },
+      { name: "Pre-Procurement Portal", href: "/solutions/pre-procurement-portal", icon: PreProcurementPortal },
+      { name: "Post Procurement Portal", href: "/solutions/post-procurement-portal", icon: PostProcurementPortal },
+      { name: "Forward / Reverse Auctioning", href: "/solutions/forward-reverse-auctioning", icon: ForwardReverseAuctioning },
     ],
   },
   {
     title: "Process Optimization",
     items: [
-      { name: "Account Payable Automation", icon: AccountPayableAutomation },
-      { name: "P2P Suite For SAP", icon: P2PSuiteForSAP },
-      { name: "Financial Reconciliation", icon: FinancialReconciliation },
-      { name: "Mobile Warehouse Management System", icon: MobileWarehouseManagementSystem },
+      { name: "Account Payable Automation", href: "/solutions/account-payable-automation", icon: AccountPayableAutomation },
+      { name: "P2P Suite For SAP", href: "/solutions/p2p-suite-for-sap", icon: P2PSuiteForSAP },
+      { name: "Financial Reconciliation", href: "/solutions/financial-reconciliation", icon: FinancialReconciliation },
+      { name: "Mobile Warehouse Management System", href: "/solutions/mobile-warehouse-management-system", icon: MobileWarehouseManagementSystem },
     ],
   },
   {
     title: "Process Automation",
     items: [
-      { name: "Digital Signature Cockpit", icon: DigitalSignatureCockpit },
-      { name: "E-Invoicing / E-Way Bill Solution", icon: EInvoicingEWayBillSolution },
-      { name: "Gate Entry - Exit", icon: GateEntryExit },
-      { name: "Shift Handover", icon: ShiftHandover },
+      { name: "Digital Signature Cockpit", href: "/solutions/digital-signature-cockpit", icon: DigitalSignatureCockpit },
+      { name: "E-Invoicing / E-Way Bill Solution", href: "/solutions/e-invoicing-e-way-bill-solution", icon: EInvoicingEWayBillSolution },
+      { name: "Gate Entry - Exit", href: "/solutions/gate-entry-exit", icon: GateEntryExit },
+      { name: "Shift Handover", href: "/solutions/shift-handover", icon: ShiftHandover },
     ],
   },
 ];
@@ -88,41 +88,49 @@ const solutionGroups = [
 const serviceItems = [
   {
     name: "Business Transformation Services",
+    href: "/services/business-transformation-services",
     icon: BusinessTransformationServices,
     description: "Modernize operations with digital-first solutions",
   },
   {
     name: "Rapid Deployment & BTP Applications for SAP",
+    href: "/services/rapid-deployment-btp-applications-for-sap",
     icon: RapidDeployment,
     description: "Go live faster with ready-to-use SAP extensions",
   },
   {
     name: "Master Data As A Service (MDAAS)",
+    href: "/services/master-data-as-a-service-mdaas",
     icon: MasterDataAsAService,
     description: "Ensure accurate, consistent, and reliable data",
   },
   {
     name: "Application Integration Services with SAP CPI",
+    href: "/services/application-integration-services-with-sap-cpi",
     icon: ApplicationIntegrationServicesWithSAPCPI,
     description: "Secure cloud-based process integration hub",
   },
   {
     name: "Custom Development",
+    href: "/services/custom-development",
     icon: CustomDevelopment,
     description: "Tailored solutions built for your business",
   },
   {
     name: "Platform & Technology Integration Services",
+    href: "/services/platform-technology-integration-services",
     icon: PlatformTechnologyIntegrationServices,
     description: "Connect systems for seamless data flow",
   },
   {
     name: "Staff Augmentation",
+    href: "/services/staff-augmentation",
     icon: StaffAugmentation,
     description: "Scale your teams with skilled technology experts",
   },
   {
     name: "Application Management Services (AMS)",
+    href: "/services/application-management-services-ams",
     icon: ApplicationManagementServices,
     description: "Ensure stability, performance, and continuity",
   },
@@ -179,18 +187,20 @@ const Navlinks = () => {
                 {serviceItems.map((item) => (
                   <NavigationMenuLink
                     key={item.name}
+                    asChild
                     className="rounded-xl border border-transparent px-0 py-2 hover:bg-transparent data-active:bg-transparent"
                   >
-                    <div className="flex items-start gap-3">
-                      <item.icon size={20} className="shrink-0 mt-1 size-6" />
-                      <div className="space-y-1">
-                        <div className="text-[15px] font-medium text-slate-900">{item.name}</div>
-                        <div className="text-sm text-slate-500">
-                          {item.description}
+                    <Link href={item.href}>
+                      <div className="flex items-start gap-3">
+                        <item.icon size={20} className="shrink-0 mt-1 size-6" />
+                        <div className="space-y-1">
+                          <div className="text-[15px] font-medium text-slate-900">{item.name}</div>
+                          <div className="text-sm text-slate-500">
+                            {item.description}
+                          </div>
                         </div>
                       </div>
-                    </div>
-
+                    </Link>
                   </NavigationMenuLink>
                 ))}
               </div>
