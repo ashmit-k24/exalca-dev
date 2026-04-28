@@ -192,7 +192,7 @@ const Navlinks = () => {
                   >
                     <Link href={item.href}>
                       <div className="flex items-start gap-3">
-                        <item.icon size={20} className="shrink-0 mt-1 size-6" />
+                        <item.icon size={20} className="shrink-0 mt-0 size-6" />
                         <div className="space-y-1">
                           <div className="text-[15px] font-medium text-slate-900">{item.name}</div>
                           <div className="text-sm text-slate-500">
