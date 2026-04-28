@@ -217,13 +217,12 @@ const Navlinks = () => {
       <div className="flex items-center gap-3">
         <Button
           asChild
-          className="h-10 rounded-xl border border-[#56d26f] bg-[#2e19b9] px-5 text-sm font-semibold text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] hover:bg-[#24139a]"
+
         >
           <Link href="/schedule-demo">Schedule Demo</Link>
         </Button>
         <Button
           asChild
-          className="h-10 rounded-xl border border-[#56d26f] bg-[#2e19b9] px-5 text-sm font-semibold text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)] hover:bg-[#24139a]"
         >
           <Link href="/ess">ESS</Link>
         </Button>
