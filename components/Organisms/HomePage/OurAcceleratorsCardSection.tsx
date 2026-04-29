@@ -147,6 +147,7 @@ const OurAcceleratorsCardSection = () => {
                                     onMouseEnter={() => setHoveredId(acc.id)}
                                     onMouseLeave={() => setHoveredId(null)}
                                     progress={selectedId === acc.id ? progress : 0}
+                                    isPaused={isProgressPaused}
                                 />
                             );
                         })}
@@ -238,6 +239,7 @@ const OurAcceleratorsCardSection = () => {
                                     onMouseEnter={() => setHoveredId(acc.id)}
                                     onMouseLeave={() => setHoveredId(null)}
                                     progress={activeIndex === index ? progress : 0}
+                                    isPaused={isProgressPaused}
                                 />
                             );
                         })}
@@ -255,6 +257,7 @@ const SideCard = ({
     onMouseEnter,
     onMouseLeave,
     progress,
+    isPaused,
 }: {
     accelerator: Accelerator;
     isActive: boolean;
@@ -262,6 +265,7 @@ const SideCard = ({
     onMouseEnter: () => void;
     onMouseLeave: () => void;
     progress: number;
+    isPaused: boolean;
 }) => {
     return (
         <div
@@ -277,7 +281,10 @@ const SideCard = ({
 
             {isActive && (
                 <div
-                    style={{ height: `${Math.min(progress, 100)}%` }}
+                    style={{
+                        height: `${Math.min(progress, 100)}%`,
+                        transition: isPaused ? "none" : "height 30ms linear",
+                    }}
                     className={`absolute z-10 top-0 w-[5px] bg-linear-to-t from-[#4DB151] to-[rgba(77,177,81,0.2)] ${accelerator.side === "left" ? "left-0" : "right-0"
                         }`}
                 />
