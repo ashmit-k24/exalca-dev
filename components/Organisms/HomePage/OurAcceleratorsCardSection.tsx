@@ -33,7 +33,7 @@ const accelerators: Accelerator[] = [
         fullName: "FSCNxt – Account Payable Automation Solution",
         description: "AI that simplifies payables from capture to closure.",
         icon: IMAGE_URLS.FSCNXT_ICON,
-        logo: IMAGE_URLS.FSCNXT_ICON,
+        logo: IMAGE_URLS.FSCNXT_LOGO,
         gradient: "linear-gradient(110.45deg, rgba(109, 149, 254, 0.5) 4.39%, rgba(186, 221, 255, 0.5) 24.1%, rgba(230, 243, 255, 0.5) 49.2%, rgba(236, 254, 246, 0.5) 74.29%, rgba(113, 214, 108, 0.5) 97.59%)",
         side: "left",
     },
@@ -43,7 +43,7 @@ const accelerators: Accelerator[] = [
         fullName: "Vproc - AI powered p2p Suit for SAP",
         description: "Optimize your procure-to-pay process with AI-driven insights.",
         icon: IMAGE_URLS.VPROC_ICON,
-        logo: IMAGE_URLS.VPROC_ICON,
+        logo: IMAGE_URLS.VPROC_LOGO,
         gradient: "linear-gradient(110.45deg, rgba(109, 149, 254, 0.2) 4.39%, rgba(236, 254, 246, 0.2) 74.29%, rgba(113, 214, 108, 0.2) 97.59%)",
         side: "left",
     },
@@ -53,7 +53,7 @@ const accelerators: Accelerator[] = [
         fullName: "VGenex – Weighbridge Integrated Gate Entry and Exit Application",
         description: "Seamlessly manage gate operations and weighbridge integration.",
         icon: IMAGE_URLS.VGENEX_ICON,
-        logo: IMAGE_URLS.VGENEX_ICON,
+        logo: IMAGE_URLS.VGENEX_LOGO,
         gradient: "linear-gradient(110.45deg, rgba(113, 214, 108, 0.2) 4.39%, rgba(236, 254, 246, 0.2) 24.1%, rgba(109, 149, 254, 0.2) 97.59%)",
         side: "right",
     },
@@ -63,7 +63,7 @@ const accelerators: Accelerator[] = [
         fullName: "Nexware – Smarter Mobile Warehouse Management Solution",
         description: "Modern mobile WMS for enhanced warehouse efficiency.",
         icon: IMAGE_URLS.NEXWARE_ICON,
-        logo: IMAGE_URLS.NEXWARE_ICON,
+        logo: IMAGE_URLS.NEXWARE_LOGO,
         gradient: "linear-gradient(110.45deg, rgba(109, 149, 254, 0.2) 4.39%, rgba(186, 221, 255, 0.2) 24.1%, rgba(230, 243, 255, 0.2) 49.2%, rgba(236, 254, 246, 0.2) 74.29%, rgba(113, 214, 108, 0.2) 97.59%)",
         side: "right",
     },
@@ -73,7 +73,7 @@ const accelerators: Accelerator[] = [
         fullName: "BP Cloud - Business Partner Collaboration Platform",
         description: "Connect and collaborate with your business partners effectively.",
         icon: IMAGE_URLS.BP_CLOUD_ICON,
-        logo: IMAGE_URLS.BP_CLOUD_ICON,
+        logo: IMAGE_URLS.BP_CLOUD_LOGO,
         gradient: "linear-gradient(110.45deg, rgba(186, 221, 255, 0.2) 24.1%, rgba(230, 243, 255, 0.2) 49.2%, rgba(236, 254, 246, 0.2) 74.29%)",
         side: "right",
     },
@@ -172,48 +172,46 @@ const OurAcceleratorsCardSection = () => {
                                     {/* Layer 2 — mid border ring */}
                                     <div className="rounded-[35px] flex-1 flex flex-col p-[5px] border border-[#E8EDF7] relative bg-black/5 z-0">
                                         {/* Layer 3 — bg-white blocks black/50; overflow-hidden clips corners */}
-                                        <div className="rounded-[30px] flex-1 flex flex-col border border-[#EDF1FA] overflow-hidden relative z-10 bg-white">
-                                            <div
-                                                className="rounded-[28px] flex-1 flex flex-col items-center justify-center p-12 text-center transition-all duration-1000"
-                                                style={{ background: selectedAccelerator.gradient }}
-                                            >
-                                                <div className="relative w-full flex-1 flex items-center justify-center mb-10">
-
-
+                                        <div className="rounded-[30px] flex-1 flex flex-col border border-[#EDF1FA] overflow-hidden relative z-10 bg-white min-h-[600px]">
+                                            <div className="card-inner rounded-[28px] flex-1 relative overflow-hidden">
+                                                <AnimatePresence mode="wait">
                                                     <motion.div
-                                                        initial={{ y: 20, opacity: 0 }}
-                                                        animate={{ y: 0, opacity: 1 }}
-                                                        transition={{ duration: 0.4, delay: 0.2 }}
-                                                        className="relative z-10 w-full"
+                                                        key={selectedAccelerator.id}
+                                                        initial={{ opacity: 0 }}
+                                                        animate={{ opacity: 1 }}
+                                                        exit={{ opacity: 0 }}
+                                                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                                                        className="absolute inset-0"
                                                     >
                                                         <Image
                                                             src={selectedAccelerator.logo}
                                                             alt={selectedAccelerator.name}
-                                                            width={360}
-                                                            height={180}
-                                                            className="object-contain h-[200px] drop-shadow-2xl mx-auto"
+                                                            fill
+                                                            className="object-cover"
+                                                            priority
                                                         />
-                                                    </motion.div>
-                                                </div>
 
-                                                <div className="relative z-20 mt-auto">
-                                                    <motion.h3
-                                                        initial={{ y: 10, opacity: 0 }}
-                                                        animate={{ y: 0, opacity: 1 }}
-                                                        transition={{ duration: 0.3, delay: 0.3 }}
-                                                        className="text-2xl font-extrabold text-[#0E121B] mb-4 leading-tight tracking-tight"
-                                                    >
-                                                        {selectedAccelerator.fullName}
-                                                    </motion.h3>
-                                                    <motion.p
-                                                        initial={{ y: 10, opacity: 0 }}
-                                                        animate={{ y: 0, opacity: 1 }}
-                                                        transition={{ duration: 0.3, delay: 0.4 }}
-                                                        className="text-[#64748B] text-base font-medium leading-relaxed max-w-[340px] mx-auto"
-                                                    >
-                                                        {selectedAccelerator.description}
-                                                    </motion.p>
-                                                </div>
+                                                        {/* Bottom Content Overlay */}
+                                                        <div className="absolute inset-x-0 bottom-0 p-10 bg-linear-to-t  text-left">
+                                                            <motion.h3
+                                                                initial={{ y: 20, opacity: 0 }}
+                                                                animate={{ y: 0, opacity: 1 }}
+                                                                transition={{ duration: 0.4, delay: 0.2 }}
+                                                                className="text-black text-3xl font-bold mb-4"
+                                                            >
+                                                                {selectedAccelerator.fullName}
+                                                            </motion.h3>
+                                                            <motion.p
+                                                                initial={{ y: 20, opacity: 0 }}
+                                                                animate={{ y: 0, opacity: 1 }}
+                                                                transition={{ duration: 0.4, delay: 0.3 }}
+                                                                className="text-black text-lg font-medium leading-relaxed max-w-lg"
+                                                            >
+                                                                {selectedAccelerator.description}
+                                                            </motion.p>
+                                                        </div>
+                                                    </motion.div>
+                                                </AnimatePresence>
                                             </div>
                                         </div>
                                     </div>

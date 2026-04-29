@@ -34,7 +34,12 @@ export enum IMAGE_URLS {
 
   // our accelerators card section middle images 
 
-  MDS_LOGO = "/assets/images/home-page/our-accelerators-card-section/MDS-logo.webp",
+  MDS_LOGO = "/assets/images/home-page/our-accelerators-card-section/middle-images/MDS.webp",
+  FSCNXT_LOGO = "/assets/images/home-page/our-accelerators-card-section/middle-images/FSCNxt.webp",
+  VPROC_LOGO = "/assets/images/home-page/our-accelerators-card-section/middle-images/Vproc.webp",
+  VGENEX_LOGO = "/assets/images/home-page/our-accelerators-card-section/middle-images/VGenex.webp",
+  NEXWARE_LOGO = "/assets/images/home-page/our-accelerators-card-section/middle-images/Nexware.webp",
+  BP_CLOUD_LOGO = "/assets/images/home-page/our-accelerators-card-section/middle-images/BpCloud.webp",
 
   // our accelerators card icons 
 
