@@ -212,13 +212,14 @@ const SideCard = ({
 
             {isActive && (
                 <motion.div
-                    layoutId="activeBar"
+                    layoutId={`activeBar-${accelerator.side}`}
                     className={`absolute z-10 top-0 bottom-[60%] w-[5px] bg-linear-to-t from-[#4DB151] to-[rgba(77,177,81,0.2)] ${accelerator.side === "left" ? "left-0" : "right-0"
                         }`}
                 />
             )}
             {isActive && (
                 <motion.div
+                    layoutId={`activeProgressbar-${accelerator.side}`}
                     className={`absolute top-0 bottom-0 w-[5px] bg-[#E2FFDF] ${accelerator.side === "left" ? "left-0" : "right-0"
                         }`}
                 />
