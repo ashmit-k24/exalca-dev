@@ -4,17 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { IMAGE_URLS } from "@/constants/images.constants";
-
-interface Accelerator {
-    id: string;
-    name: string;
-    fullName: string;
-    description: string;
-    icon: string;
-    logo: string;
-    gradient: string;
-    side: "left" | "right";
-}
+import SideCard, { type Accelerator } from "@/components/Molecules/HomePage/SideCard";
 
 const accelerators: Accelerator[] = [
     {
@@ -127,7 +117,7 @@ const OurAcceleratorsCardSection = () => {
     }, []);
 
     return (
-        <section className="OurAcceleratorsCardSection py-24 bg-[#F5F7FA] overflow-hidden">
+        <section className="OurAcceleratorsCardSection py-20 bg-[#F5F7FA] overflow-hidden">
             <div className="container mx-auto px-4">
                 <div className="flex flex-col lg:flex-row items-stretch justify-center gap-0">
 
@@ -168,11 +158,11 @@ const OurAcceleratorsCardSection = () => {
                                 {/* Outer Glow/Shadow effect */}
                                 <div className="absolute -inset-6 bg-white/30 rounded-[48px] blur-2xl -z-10" />
 
-                                {/* Layer 1 — outermost white border + shadow */}
+                            {/* Layer 1 — outermost white border + shadow */}
                                 <div className="bg-white rounded-[24px] flex-1 flex flex-col p-[12px]">
                                     {/* Layer 2 — mid border ring */}
                                     <div className="rounded-[12px] flex-1 flex flex-col p-[8px] border border-[#E1E4EA] relative bg-black/2 z-0">
-                                        <div className="rounded-[8px] flex-1 flex flex-col border border-[#E1E4EA] overflow-hidden relative z-10 bg-white ">
+                                        <div className="rounded-[8px] flex-1 flex flex-col border border-border overflow-hidden relative z-10 bg-white ">
                                             <div className="card-inner rounded-[8px] flex-1 relative overflow-hidden">
                                                 <AnimatePresence mode="wait">
                                                     <motion.div
@@ -243,71 +233,6 @@ const OurAcceleratorsCardSection = () => {
                 </div>
             </div>
         </section>
-    );
-};
-
-const SideCard = ({
-    accelerator,
-    isActive,
-    onClick,
-    onMouseEnter,
-    onMouseLeave,
-    progress,
-    isPaused,
-}: {
-    accelerator: Accelerator;
-    isActive: boolean;
-    onClick: () => void;
-    onMouseEnter: () => void;
-    onMouseLeave: () => void;
-    progress: number;
-    isPaused: boolean;
-}) => {
-    return (
-        <div
-            onClick={onClick}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-            className={`relative cursor-pointer group transition-all duration-500 p-8 flex flex-col ${isActive
-                ? "bg-white shadow-[0_15px_35px_rgba(0,0,0,0.08)] scale-[1.01]"
-                : "hover:bg-white/40"
-                } ${accelerator.side === "right" ? "items-end text-right" : "items-start text-left"}`}
-        >
-            {/* Vertical Indicator Bar */}
-
-            {isActive && (
-                <div
-                    style={{
-                        height: `${Math.min(progress, 100)}%`,
-                        transition: isPaused ? "none" : "height 30ms linear",
-                    }}
-                    className={`absolute z-10 top-0 w-[5px] bg-linear-to-t from-[#4DB151] to-[rgba(77,177,81,0.2)] ${accelerator.side === "left" ? "left-0" : "right-0"
-                        }`}
-                />
-            )}
-            {isActive && (
-                <motion.div
-                    layoutId={`activeBar-${accelerator.side}`}
-                    className={`absolute top-0 bottom-0 w-[5px] bg-[#E2FFDF] ${accelerator.side === "left" ? "left-0" : "right-0"
-                        }`}
-                />
-            )}
-            <div className={`w-11 h-11 rounded-[8px] flex items-center justify-center mb-5 border transition-all duration-500 ${isActive ? "bg-white border-[#5B49E9]" : "border-[#E1E4EA] "
-                }`}>
-                <Image
-                    src={accelerator.icon}
-                    alt={accelerator.name}
-                    width={24}
-                    height={24}
-                    className="object-contain w-6 h-6"
-                />
-            </div>
-
-            <h4 className={`text-[18px] font-semibold leading-[32px] transition-all duration-500 w-11/12 "
-                }`}>
-                {accelerator.fullName}
-            </h4>
-        </div>
     );
 };
 
