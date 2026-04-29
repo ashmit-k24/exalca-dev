@@ -29,27 +29,48 @@ export function OurAccelatorsSvg({
             const outerCircles = gsap.utils.toArray<SVGPathElement>(".outer-circle");
             const outerCircleStrokes = outerCircles.filter((node) => node.hasAttribute("stroke"));
             const outerCircleFills = outerCircles.filter((node) => !node.hasAttribute("stroke"));
+            const centerOutCircleFills = [...outerCircleFills].sort((a, b) => {
+                const aBox = a.getBBox();
+                const bBox = b.getBBox();
+                const aDistance = Math.abs(aBox.x + aBox.width / 2 - 720);
+                const bDistance = Math.abs(bBox.x + bBox.width / 2 - 720);
+
+                return aDistance - bDistance;
+            });
+            const centerOutCircleStrokes = [...outerCircleStrokes].sort((a, b) => {
+                const aBox = a.getBBox();
+                const bBox = b.getBBox();
+                const aDistance = Math.abs(aBox.x + aBox.width / 2 - 720);
+                const bDistance = Math.abs(bBox.x + bBox.width / 2 - 720);
+
+                return aDistance - bDistance;
+            });
             const icons = gsap.utils.toArray<SVGGElement>(".icons");
             const iconPaths = gsap.utils.toArray<SVGPathElement>(".icons path");
             const texts = gsap.utils.toArray<SVGPathElement>(".text");
 
             gsap.set(outerCircleFills, {
                 autoAlpha: 0,
-                scale: 0.94,
-                opacity:0,
+                scale: 0,
+                y: 18,
+                rotate: -2,
+                opacity: 0,
                 transformOrigin: "center center",
                 transformBox: "fill-box",
             });
 
             gsap.set(outerCircleStrokes, {
-                autoAlpha: 1,
-                drawSVG: "0%",
+                autoAlpha: 0,
+                drawSVG: "50% 50%",
+                transformOrigin: "center center",
+                transformBox: "fill-box",
             });
 
             gsap.set(icons, {
                 autoAlpha: 0,
-                y: 12,
-                scale: 0.97,
+                y: 18,
+                scale: 0.9,
+                rotate: -3,
                 transformOrigin: "center center",
                 transformBox: "fill-box",
             });
@@ -64,7 +85,8 @@ export function OurAccelatorsSvg({
 
             gsap.set(texts, {
                 autoAlpha: 0,
-                y: 10,
+                y: 16,
+                filter: "blur(5px)",
             });
 
             const tl = gsap.timeline({
@@ -78,22 +100,26 @@ export function OurAccelatorsSvg({
                 },
             });
 
-            tl.to(outerCircleFills, {
+            tl.to(centerOutCircleFills, {
                 autoAlpha: 1,
                 scale: 1,
-                opacity:1,
-                duration: 0.3,
-                stagger: 0.06,
+                y: 0,
+                rotate: 0,
+                opacity: 1,
+                duration: 0.95,
+                stagger: 0.01,
+                ease: "expo.out",
             })
                 .to(
-                    outerCircleStrokes,
+                    centerOutCircleStrokes,
                     {
+                        autoAlpha: 1,
                         drawSVG: "100%",
-                        duration: 0.4,
-                        stagger: 0.06,
-                        ease: "power2.inOut",
+                        duration: 0.8,
+                        stagger: 0.08,
+                        ease: "power3.inOut",
                     },
-                    "-=0.28",
+                    "-=0.72",
                 )
                 .to(
                     icons,
@@ -101,31 +127,35 @@ export function OurAccelatorsSvg({
                         autoAlpha: 1,
                         y: 0,
                         scale: 1,
-                        duration: 0.5,
-                        stagger: 0.06,
+                        rotate: 0,
+                        duration: 0.75,
+                        stagger: 0.08,
+                        ease: "expo.out",
                     },
-                    "<+=0.04",
+                    "-=0.48",
                 )
                 .to(
                     iconPaths,
                     {
                         drawSVG: "100%",
                         fillOpacity: 1,
-                        duration: 0.65,
-                        stagger: 0.06,
-                        ease: "power1.inOut",
+                        duration: 0.8,
+                        stagger: 0.045,
+                        ease: "power2.inOut",
                     },
-                    "<",
+                    "<+=0.06",
                 )
                 .to(
                     texts,
                     {
                         autoAlpha: 1,
                         y: 0,
-                        duration: 0.38,
-                        stagger: 0.06,
+                        filter: "blur(0px)",
+                        duration: 0.6,
+                        stagger: 0.025,
+                        ease: "power3.out",
                     },
-                    "-=0.28",
+                    "-=0.42",
                 );
         }, wrapperRef);
 
