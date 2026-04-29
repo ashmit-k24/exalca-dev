@@ -1,6 +1,6 @@
 const AboutUs = () => {
   return (
-    <section className="sec_padding">
+    <section className="sec_padding bg-background">
       <div className="container">
         <p className="text-[24px] text-[#0E121B] font-light leading-[42px]!">
           <b>Exalca Technologies Pvt Ltd</b> is a leading provider of
