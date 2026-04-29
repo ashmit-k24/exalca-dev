@@ -23,7 +23,7 @@ const OurAccelerators = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.1 }}
-                    className="text-4xl md:text-5xl lg:text-6xl font-bold text-gradient leading-[1.1] mb-10 max-w-4xl"
+                    className=" text-gradient section-title-h2 font-semibold mb-10 max-w-6xl"
                 >
                     Ready Solutions - Accelerated Return On SAP Investment
                 </motion.h2>
@@ -33,11 +33,9 @@ const OurAccelerators = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.2 }}
-                    className="text-[18px] md:text-[20px] text-sub-body-text leading-relaxed max-w-3xl mb-32"
+                    className="text-[18px] md:text-[28px] text-[#0E121B] leading-12 font-semibold max-w-209.5 mb-32"
                 >
-                    Our ready solution are industry demanding, ready to deploy with
-                    fixed scope and fixed time line that define, realize and sustain
-                    real business change.
+                    Our ready solution are industry demanding, ready to deploy with fixed scope and fixed time line that define, realize and sustain real business change.
                 </motion.p>
             </div>
 
