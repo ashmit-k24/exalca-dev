@@ -94,7 +94,7 @@ const OurAcceleratorsCardSection = () => {
                 <div className="flex flex-col lg:flex-row items-stretch justify-center gap-0">
 
                     {/* Left Column */}
-                    <div className="flex-1 flex flex-col lg:border-r border-[#E2E8F0] justify-center">
+                    <div className="flex-1 flex flex-col justify-center py-6">
                         {leftColumnAccs.map((acc) => (
                             <SideCard
                                 key={acc.id}
@@ -113,8 +113,8 @@ const OurAcceleratorsCardSection = () => {
                                 initial={{ opacity: 0, scale: 0.98 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.98 }}
-                                transition={{ duration: 0.5, ease: "easeInOut" }}
-                                className="relative w-full flex-1 flex flex-col"
+                                transition={{ duration: 0.2, ease: "easeInOut" }}
+                                className="relative w-full flex-1 flex flex-col z-10"
                             >
                                 {/* Outer Glow/Shadow effect */}
                                 <div className="absolute -inset-6 bg-white/30 rounded-[48px] blur-2xl -z-10" />
@@ -129,15 +129,13 @@ const OurAcceleratorsCardSection = () => {
                                                 className="rounded-[28px] flex-1 flex flex-col items-center justify-center p-12 text-center transition-all duration-1000"
                                                 style={{ background: selectedAccelerator.gradient }}
                                             >
-                                                {/* Podium/Platform Effect */}
                                                 <div className="relative w-full flex-1 flex items-center justify-center mb-10">
-                                                    <div className="absolute bottom-4 w-[85%] h-12 bg-black/5 blur-xl rounded-full" />
-                                                    <div className="absolute bottom-2 w-[75%] h-16 bg-white/40 blur-lg rounded-[50%] skew-x-[-10deg]" />
+
 
                                                     <motion.div
                                                         initial={{ y: 20, opacity: 0 }}
                                                         animate={{ y: 0, opacity: 1 }}
-                                                        transition={{ duration: 0.7, delay: 0.2 }}
+                                                        transition={{ duration: 0.4, delay: 0.2 }}
                                                         className="relative z-10 w-full"
                                                     >
                                                         <Image
@@ -154,7 +152,7 @@ const OurAcceleratorsCardSection = () => {
                                                     <motion.h3
                                                         initial={{ y: 10, opacity: 0 }}
                                                         animate={{ y: 0, opacity: 1 }}
-                                                        transition={{ duration: 0.5, delay: 0.3 }}
+                                                        transition={{ duration: 0.3, delay: 0.3 }}
                                                         className="text-2xl font-extrabold text-[#0E121B] mb-4 leading-tight tracking-tight"
                                                     >
                                                         {selectedAccelerator.fullName}
@@ -162,7 +160,7 @@ const OurAcceleratorsCardSection = () => {
                                                     <motion.p
                                                         initial={{ y: 10, opacity: 0 }}
                                                         animate={{ y: 0, opacity: 1 }}
-                                                        transition={{ duration: 0.5, delay: 0.4 }}
+                                                        transition={{ duration: 0.3, delay: 0.4 }}
                                                         className="text-[#64748B] text-base font-medium leading-relaxed max-w-[340px] mx-auto"
                                                     >
                                                         {selectedAccelerator.description}
@@ -177,7 +175,7 @@ const OurAcceleratorsCardSection = () => {
                     </div>
 
                     {/* Right Column */}
-                    <div className="flex-1 flex flex-col lg:border-l border-[#E2E8F0] justify-center">
+                    <div className="flex-1 flex flex-col justify-center py-6">
                         {rightColumnAccs.map((acc) => (
                             <SideCard
                                 key={acc.id}
@@ -205,20 +203,26 @@ const SideCard = ({
     return (
         <div
             onClick={onClick}
-            className={`relative cursor-pointer group transition-all duration-500 p-8 rounded-2xl flex flex-col ${isActive
+            className={`relative cursor-pointer group transition-all duration-500 p-8 flex flex-col ${isActive
                 ? "bg-white shadow-[0_15px_35px_rgba(0,0,0,0.08)] scale-[1.02]"
                 : "hover:bg-white/40"
                 } ${accelerator.side === "right" ? "items-end text-right" : "items-start text-left"}`}
         >
             {/* Vertical Indicator Bar */}
+
             {isActive && (
                 <motion.div
                     layoutId="activeBar"
-                    className={`absolute top-8 bottom-8 w-[5px] bg-gradient-to-b from-[#4ADE80] to-[#22C55E] rounded-full ${accelerator.side === "left" ? "left-0" : "right-0"
+                    className={`absolute z-10 top-0 bottom-[60%] w-[5px] bg-linear-to-t from-[#4DB151] to-[rgba(77,177,81,0.2)] ${accelerator.side === "left" ? "left-0" : "right-0"
                         }`}
                 />
             )}
-
+            {isActive && (
+                <motion.div
+                    className={`absolute top-0 bottom-0 w-[5px] bg-[#E2FFDF] ${accelerator.side === "left" ? "left-0" : "right-0"
+                        }`}
+                />
+            )}
             <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-5 border-2 transition-all duration-500 shadow-sm ${isActive ? "bg-white border-[#F1F5F9]" : "bg-[#F8FAFC] border-transparent "
                 }`}>
                 <Image
@@ -230,7 +234,7 @@ const SideCard = ({
                 />
             </div>
 
-            <h4 className={`text-lg font-bold leading-snug transition-all duration-500 max-w-[280px] ${isActive ? "text-[#0E121B]" : "text-[#94A3B8] group-hover:text-[#64748B]"
+            <h4 className={`text-lg font-bold leading-snug transition-all duration-500 w-11/12 ${isActive ? "text-[#0E121B]" : "text-[#94A3B8] group-hover:text-[#64748B]"
                 }`}>
                 {accelerator.fullName}
             </h4>
