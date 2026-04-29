@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { IMAGE_URLS } from "@/constants/images.constants";
@@ -87,6 +87,18 @@ const OurAcceleratorsCardSection = () => {
 
     const leftColumnAccs = accelerators.filter((acc) => acc.side === "left");
     const rightColumnAccs = accelerators.filter((acc) => acc.side === "right");
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setSelectedId((prevId) => {
+                const currentIndex = accelerators.findIndex((acc) => acc.id === prevId);
+                const nextIndex = (currentIndex + 1) % accelerators.length;
+                return accelerators[nextIndex].id;
+            });
+        }, 3000);
+
+        return () => clearTimeout(timer);
+    }, [selectedId]);
 
     return (
         <section className="OurAcceleratorsCardSection py-24 bg-[#F5F7FA] overflow-hidden">
@@ -204,7 +216,7 @@ const SideCard = ({
         <div
             onClick={onClick}
             className={`relative cursor-pointer group transition-all duration-500 p-8 flex flex-col ${isActive
-                ? "bg-white shadow-[0_15px_35px_rgba(0,0,0,0.08)] scale-[1.02]"
+                ? "bg-white shadow-[0_15px_35px_rgba(0,0,0,0.08)] scale-[1.01]"
                 : "hover:bg-white/40"
                 } ${accelerator.side === "right" ? "items-end text-right" : "items-start text-left"}`}
         >
@@ -212,14 +224,17 @@ const SideCard = ({
 
             {isActive && (
                 <motion.div
-                    layoutId={`activeBar-${accelerator.side}`}
-                    className={`absolute z-10 top-0 bottom-[60%] w-[5px] bg-linear-to-t from-[#4DB151] to-[rgba(77,177,81,0.2)] ${accelerator.side === "left" ? "left-0" : "right-0"
+                    layoutId={`activeProgressBar-${accelerator.side}`}
+                    initial={{ height: "0%" }}
+                    animate={{ height: "100%" }}
+                    transition={{ duration: 3, ease: "linear" }}
+                    className={`absolute z-10 top-0 w-[5px] bg-linear-to-t from-[#4DB151] to-[rgba(77,177,81,0.2)] ${accelerator.side === "left" ? "left-0" : "right-0"
                         }`}
                 />
             )}
             {isActive && (
                 <motion.div
-                    layoutId={`activeProgressbar-${accelerator.side}`}
+                    layoutId={`activeBar-${accelerator.side}`}
                     className={`absolute top-0 bottom-0 w-[5px] bg-[#E2FFDF] ${accelerator.side === "left" ? "left-0" : "right-0"
                         }`}
                 />
