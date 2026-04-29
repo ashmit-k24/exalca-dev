@@ -81,6 +81,9 @@ const accelerators: Accelerator[] = [
 
 const OurAcceleratorsCardSection = () => {
     const [selectedId, setSelectedId] = useState(accelerators[1].id); // Default to FSCNxt
+    const [hoveredId, setHoveredId] = useState<string | null>(null);
+
+    const isPaused = hoveredId !== null && hoveredId !== selectedId;
 
     const selectedAccelerator =
         accelerators.find((acc) => acc.id === selectedId) || accelerators[0];
@@ -89,7 +92,8 @@ const OurAcceleratorsCardSection = () => {
     const rightColumnAccs = accelerators.filter((acc) => acc.side === "right");
 
     useEffect(() => {
-        const timer = setTimeout(() => {
+        if (isPaused) return;
+        const interval = setInterval(() => {
             setSelectedId((prevId) => {
                 const currentIndex = accelerators.findIndex((acc) => acc.id === prevId);
                 const nextIndex = (currentIndex + 1) % accelerators.length;
@@ -97,8 +101,8 @@ const OurAcceleratorsCardSection = () => {
             });
         }, 3000);
 
-        return () => clearTimeout(timer);
-    }, [selectedId]);
+        return () => clearInterval(interval);
+    }, [selectedId, isPaused]);
 
     return (
         <section className="OurAcceleratorsCardSection py-24 bg-[#F5F7FA] overflow-hidden">
@@ -113,6 +117,9 @@ const OurAcceleratorsCardSection = () => {
                                 accelerator={acc}
                                 isActive={selectedId === acc.id}
                                 onClick={() => setSelectedId(acc.id)}
+                                onMouseEnter={() => setHoveredId(acc.id)}
+                                onMouseLeave={() => setHoveredId(null)}
+                                isPaused={isPaused}
                             />
                         ))}
                     </div>
@@ -194,6 +201,9 @@ const OurAcceleratorsCardSection = () => {
                                 accelerator={acc}
                                 isActive={selectedId === acc.id}
                                 onClick={() => setSelectedId(acc.id)}
+                                onMouseEnter={() => setHoveredId(acc.id)}
+                                onMouseLeave={() => setHoveredId(null)}
+                                isPaused={isPaused}
                             />
                         ))}
                     </div>
@@ -207,14 +217,22 @@ const SideCard = ({
     accelerator,
     isActive,
     onClick,
+    onMouseEnter,
+    onMouseLeave,
+    isPaused,
 }: {
     accelerator: Accelerator;
     isActive: boolean;
     onClick: () => void;
+    onMouseEnter: () => void;
+    onMouseLeave: () => void;
+    isPaused: boolean;
 }) => {
     return (
         <div
             onClick={onClick}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
             className={`relative cursor-pointer group transition-all duration-500 p-8 flex flex-col ${isActive
                 ? "bg-white shadow-[0_15px_35px_rgba(0,0,0,0.08)] scale-[1.01]"
                 : "hover:bg-white/40"
@@ -224,9 +242,9 @@ const SideCard = ({
 
             {isActive && (
                 <motion.div
-                    layoutId={`activeProgressBar-${accelerator.side}`}
+                    key={`${accelerator.id}-${isPaused}`}
                     initial={{ height: "0%" }}
-                    animate={{ height: "100%" }}
+                    animate={isPaused ? { height: "0%" } : { height: "100%" }}
                     transition={{ duration: 3, ease: "linear" }}
                     className={`absolute z-10 top-0 w-[5px] bg-linear-to-t from-[#4DB151] to-[rgba(77,177,81,0.2)] ${accelerator.side === "left" ? "left-0" : "right-0"
                         }`}
