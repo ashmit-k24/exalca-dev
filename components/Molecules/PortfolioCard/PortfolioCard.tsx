@@ -25,10 +25,10 @@ const PortfolioCard = ({ item }: { item: PortfolioItem }) => {
                 {/* Inner Layer */}
                 <div className="rounded-[8px] flex-1 flex flex-col border border-border relative overflow-hidden bg-white">
                     <div className="p-8 pb-0! flex flex-col h-full z-10">
-                        <h3 className="text-[20px] font-bold text-[#0E121B] leading-[30px] mb-4">
+                        <h3 className="text-[20px] font-semibold text-[#0E121B] leading-[30px] mb-4">
                             {item.title}
                         </h3>
-                        <p className="text-[14px] text-[#64748B] leading-[24px] mb-8 max-w-[280px]">
+                        <p className="text-[14px] text-sub-body-text leading-[28px] mb-8">
                             {item.description}
                         </p>
 
