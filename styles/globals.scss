@@ -1,6 +1,24 @@
 @use "./partials";
 
-
+.outer-circle{
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  
+  
+}
+.icons{
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+.text{
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: top center;
+  transform: scale(0.8) translateX(15%) !important;
+  transition: all 0.1s ease-in-out !important;
+}
 
 .container {
   margin: 0 auto;

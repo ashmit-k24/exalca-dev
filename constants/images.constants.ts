@@ -11,4 +11,11 @@ export enum IMAGE_URLS {
   GROWING_WORK_FORCE = "/assets/images/home-page/growing-work-force.png",
   VALUED_CLIENTELE = "/assets/images/home-page/valued-clientele.png",
 
+  // our accelerators section
+  SAP_TEST_FRAMEWORK = "/assets/images/home-page/our-accelerators/SAP-Test-Framework.svg",
+  USABILITY_FIRST = "/assets/images/home-page/our-accelerators/Usability-First.svg",
+  PROVEN_BUSINESS_CASES = "/assets/images/home-page/our-accelerators/Proven-Business-Cases.svg",
+  TRUST_WHAT_YOU_SEE = "/assets/images/home-page/our-accelerators/Trust-What-You-See.svg",
+  NO_EXPERIMENTS = "/assets/images/home-page/our-accelerators/No-Experiments.svg",
 }
+
