@@ -104,6 +104,7 @@ const OurAcceleratorsCardSection = () => {
 
     useEffect(() => {
         const interval = setInterval(() => {
+            // return;
             if (isProgressPausedRef.current) return;
 
             progressRef.current += 1;
@@ -158,28 +159,24 @@ const OurAcceleratorsCardSection = () => {
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={selectedAccelerator.id}
-                                initial={{ opacity: 0, scale: 0.98 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.98 }}
-                                transition={{ duration: 0.2, ease: "easeInOut" }}
+                                initial={{ scale: 0.99 }}
+                                animate={{ scale: 1 }}
+                                exit={{ scale: 0.99 }}
+                                transition={{ duration: 0.3, ease: "easeInOut" }}
                                 className="relative w-full flex-1 flex flex-col z-10"
                             >
                                 {/* Outer Glow/Shadow effect */}
                                 <div className="absolute -inset-6 bg-white/30 rounded-[48px] blur-2xl -z-10" />
 
                                 {/* Layer 1 — outermost white border + shadow */}
-                                <div className="bg-white rounded-[40px] flex-1 flex flex-col p-[5px] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-[#DDE4EF]">
+                                <div className="bg-white rounded-[24px] flex-1 flex flex-col p-[12px]">
                                     {/* Layer 2 — mid border ring */}
-                                    <div className="rounded-[35px] flex-1 flex flex-col p-[5px] border border-[#E8EDF7] relative bg-black/5 z-0">
-                                        {/* Layer 3 — bg-white blocks black/50; overflow-hidden clips corners */}
-                                        <div className="rounded-[30px] flex-1 flex flex-col border border-[#EDF1FA] overflow-hidden relative z-10 bg-white min-h-[600px]">
-                                            <div className="card-inner rounded-[28px] flex-1 relative overflow-hidden">
+                                    <div className="rounded-[12px] flex-1 flex flex-col p-[8px] border border-[#E1E4EA] relative bg-black/2 z-0">
+                                        <div className="rounded-[8px] flex-1 flex flex-col border border-[#E1E4EA] overflow-hidden relative z-10 bg-white ">
+                                            <div className="card-inner rounded-[8px] flex-1 relative overflow-hidden">
                                                 <AnimatePresence mode="wait">
                                                     <motion.div
                                                         key={selectedAccelerator.id}
-                                                        initial={{ opacity: 0 }}
-                                                        animate={{ opacity: 1 }}
-                                                        exit={{ opacity: 0 }}
                                                         transition={{ duration: 0.4, ease: "easeInOut" }}
                                                         className="absolute inset-0"
                                                     >
@@ -192,12 +189,12 @@ const OurAcceleratorsCardSection = () => {
                                                         />
 
                                                         {/* Bottom Content Overlay */}
-                                                        <div className="absolute inset-x-0 bottom-0 p-10 bg-linear-to-t  text-left">
+                                                        <div className="absolute inset-x-0 top-[55%] bottom-0 p-6 pt-0 bg-linear-to-t  text-left">
                                                             <motion.h3
                                                                 initial={{ y: 20, opacity: 0 }}
                                                                 animate={{ y: 0, opacity: 1 }}
                                                                 transition={{ duration: 0.4, delay: 0.2 }}
-                                                                className="text-black text-3xl font-bold mb-4"
+                                                                className="text-foreground text-[24px] font-semibold leading-[32px] text-center mb-4"
                                                             >
                                                                 {selectedAccelerator.fullName}
                                                             </motion.h3>
@@ -205,7 +202,7 @@ const OurAcceleratorsCardSection = () => {
                                                                 initial={{ y: 20, opacity: 0 }}
                                                                 animate={{ y: 0, opacity: 1 }}
                                                                 transition={{ duration: 0.4, delay: 0.3 }}
-                                                                className="text-black text-lg font-medium leading-relaxed max-w-lg"
+                                                                className="text-sub-body-text text-[16px] font-normal leading-[28px] text-center"
                                                             >
                                                                 {selectedAccelerator.description}
                                                             </motion.p>
@@ -294,18 +291,18 @@ const SideCard = ({
                         }`}
                 />
             )}
-            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-5 border-2 transition-all duration-500 shadow-sm ${isActive ? "bg-white border-[#F1F5F9]" : "bg-[#F8FAFC] border-transparent "
+            <div className={`w-11 h-11 rounded-[8px] flex items-center justify-center mb-5 border transition-all duration-500 ${isActive ? "bg-white border-[#5B49E9]" : "border-[#E1E4EA] "
                 }`}>
                 <Image
                     src={accelerator.icon}
                     alt={accelerator.name}
-                    width={36}
-                    height={36}
-                    className="object-contain"
+                    width={24}
+                    height={24}
+                    className="object-contain w-6 h-6"
                 />
             </div>
 
-            <h4 className={`text-lg font-bold leading-snug transition-all duration-500 w-11/12 ${isActive ? "text-[#0E121B]" : "text-[#94A3B8] group-hover:text-[#64748B]"
+            <h4 className={`text-[18px] font-semibold leading-[32px] transition-all duration-500 w-11/12 "
                 }`}>
                 {accelerator.fullName}
             </h4>
