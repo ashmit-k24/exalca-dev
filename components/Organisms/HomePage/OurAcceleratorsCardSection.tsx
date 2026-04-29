@@ -119,49 +119,56 @@ const OurAcceleratorsCardSection = () => {
                                 {/* Outer Glow/Shadow effect */}
                                 <div className="absolute -inset-6 bg-white/30 rounded-[48px] blur-2xl -z-10" />
 
-                                <div className="bg-white rounded-[40px] flex-1 flex flex-col p-2 shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-white">
-                                    <div
-                                        className="rounded-[36px] flex-1 flex flex-col items-center justify-center p-12 text-center transition-all duration-1000"
-                                        style={{ background: selectedAccelerator.gradient }}
-                                    >
-                                        {/* Podium/Platform Effect */}
-                                        <div className="relative w-full flex-1 flex items-center justify-center mb-10">
-                                            <div className="absolute bottom-4 w-[85%] h-12 bg-black/5 blur-xl rounded-full" />
-                                            <div className="absolute bottom-2 w-[75%] h-16 bg-white/40 blur-lg rounded-[50%] skew-x-[-10deg]" />
+                                {/* Layer 1 — outermost white border + shadow */}
+                                <div className="bg-white rounded-[40px] flex-1 flex flex-col p-[5px] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-[#DDE4EF]">
+                                    {/* Layer 2 — mid border ring */}
+                                    <div className="rounded-[35px] flex-1 flex flex-col p-[5px] border border-[#E8EDF7] relative bg-black/5 z-0">
+                                        {/* Layer 3 — bg-white blocks black/50; overflow-hidden clips corners */}
+                                        <div className="rounded-[30px] flex-1 flex flex-col border border-[#EDF1FA] overflow-hidden relative z-10 bg-white">
+                                            <div
+                                                className="rounded-[28px] flex-1 flex flex-col items-center justify-center p-12 text-center transition-all duration-1000"
+                                                style={{ background: selectedAccelerator.gradient }}
+                                            >
+                                                {/* Podium/Platform Effect */}
+                                                <div className="relative w-full flex-1 flex items-center justify-center mb-10">
+                                                    <div className="absolute bottom-4 w-[85%] h-12 bg-black/5 blur-xl rounded-full" />
+                                                    <div className="absolute bottom-2 w-[75%] h-16 bg-white/40 blur-lg rounded-[50%] skew-x-[-10deg]" />
 
-                                            <motion.div
-                                                initial={{ y: 20, opacity: 0 }}
-                                                animate={{ y: 0, opacity: 1 }}
-                                                transition={{ duration: 0.7, delay: 0.2 }}
-                                                className="relative z-10 w-full"
-                                            >
-                                                <Image
-                                                    src={selectedAccelerator.logo}
-                                                    alt={selectedAccelerator.name}
-                                                    width={360}
-                                                    height={180}
-                                                    className="object-contain h-[200px] drop-shadow-2xl mx-auto"
-                                                />
-                                            </motion.div>
-                                        </div>
+                                                    <motion.div
+                                                        initial={{ y: 20, opacity: 0 }}
+                                                        animate={{ y: 0, opacity: 1 }}
+                                                        transition={{ duration: 0.7, delay: 0.2 }}
+                                                        className="relative z-10 w-full"
+                                                    >
+                                                        <Image
+                                                            src={selectedAccelerator.logo}
+                                                            alt={selectedAccelerator.name}
+                                                            width={360}
+                                                            height={180}
+                                                            className="object-contain h-[200px] drop-shadow-2xl mx-auto"
+                                                        />
+                                                    </motion.div>
+                                                </div>
 
-                                        <div className="relative z-20 mt-auto">
-                                            <motion.h3
-                                                initial={{ y: 10, opacity: 0 }}
-                                                animate={{ y: 0, opacity: 1 }}
-                                                transition={{ duration: 0.5, delay: 0.3 }}
-                                                className="text-2xl font-extrabold text-[#0E121B] mb-4 leading-tight tracking-tight"
-                                            >
-                                                {selectedAccelerator.fullName}
-                                            </motion.h3>
-                                            <motion.p
-                                                initial={{ y: 10, opacity: 0 }}
-                                                animate={{ y: 0, opacity: 1 }}
-                                                transition={{ duration: 0.5, delay: 0.4 }}
-                                                className="text-[#64748B] text-base font-medium leading-relaxed max-w-[340px] mx-auto"
-                                            >
-                                                {selectedAccelerator.description}
-                                            </motion.p>
+                                                <div className="relative z-20 mt-auto">
+                                                    <motion.h3
+                                                        initial={{ y: 10, opacity: 0 }}
+                                                        animate={{ y: 0, opacity: 1 }}
+                                                        transition={{ duration: 0.5, delay: 0.3 }}
+                                                        className="text-2xl font-extrabold text-[#0E121B] mb-4 leading-tight tracking-tight"
+                                                    >
+                                                        {selectedAccelerator.fullName}
+                                                    </motion.h3>
+                                                    <motion.p
+                                                        initial={{ y: 10, opacity: 0 }}
+                                                        animate={{ y: 0, opacity: 1 }}
+                                                        transition={{ duration: 0.5, delay: 0.4 }}
+                                                        className="text-[#64748B] text-base font-medium leading-relaxed max-w-[340px] mx-auto"
+                                                    >
+                                                        {selectedAccelerator.description}
+                                                    </motion.p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +214,7 @@ const SideCard = ({
             {isActive && (
                 <motion.div
                     layoutId="activeBar"
-                    className={`absolute top-8 bottom-8 w-[5px] bg-gradient-to-b from-[#4ADE80] to-[#22C55E] rounded-full ${accelerator.side === "left" ? "-left-1" : "-right-1"
+                    className={`absolute top-8 bottom-8 w-[5px] bg-gradient-to-b from-[#4ADE80] to-[#22C55E] rounded-full ${accelerator.side === "left" ? "left-0" : "right-0"
                         }`}
                 />
             )}
