@@ -86,6 +86,7 @@ const CoreValues = ({
                     src={value.icon}
                     alt={value.title}
                     fill
+                    sizes="80px"
                     className="object-contain"
                   />
                 </div>

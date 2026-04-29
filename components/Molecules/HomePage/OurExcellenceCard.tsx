@@ -29,7 +29,8 @@ const OurExcellenceCard: React.FC<OurExcellenceCardProps> = ({
                         <Image
                             src={IMAGE_URLS.OUR_EXCELLENCE_BG_ELEMENTS}
                             alt="Background Elements"
-                            fill
+                            width={700}
+                            height={700}
                             className="object-cover w-[60%] group-hover:translate-y-2  transition-all duration-1000"
                         />
                     </div>
@@ -39,7 +40,8 @@ const OurExcellenceCard: React.FC<OurExcellenceCardProps> = ({
                         <Image
                             src={image}
                             alt={title}
-                            fill
+                            width={600}
+                            height={600}
                             className="object-contain"
                             priority
                         />

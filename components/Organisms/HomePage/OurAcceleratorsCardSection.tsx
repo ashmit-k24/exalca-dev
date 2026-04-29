@@ -173,8 +173,8 @@ const OurAcceleratorsCardSection = () => {
                                                         <Image
                                                             src={selectedAccelerator.logo}
                                                             alt={selectedAccelerator.name}
-                                                            fill
-                                                            sizes="w-full"
+                                                            width={800}
+                                                            height={800}
                                                             className="object-cover"
                                                             priority
                                                         />
