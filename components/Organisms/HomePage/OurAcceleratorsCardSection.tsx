@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { IMAGE_URLS } from "@/constants/images.constants";
@@ -80,29 +80,50 @@ const accelerators: Accelerator[] = [
 ];
 
 const OurAcceleratorsCardSection = () => {
-    const [selectedId, setSelectedId] = useState(accelerators[1].id); // Default to FSCNxt
+    const [activeIndex, setActiveIndex] = useState(0); // Start with MDS
     const [hoveredId, setHoveredId] = useState<string | null>(null);
+    const [progress, setProgress] = useState(0);
+    const progressRef = useRef(0);
 
-    const isPaused = hoveredId !== null && hoveredId !== selectedId;
+    const selectedId = accelerators[activeIndex].id;
+    const selectedAccelerator = accelerators[activeIndex];
 
-    const selectedAccelerator =
-        accelerators.find((acc) => acc.id === selectedId) || accelerators[0];
+    const isAutoplayPaused = hoveredId !== null;
+    const isProgressPaused = hoveredId !== null && hoveredId !== selectedId;
 
     const leftColumnAccs = accelerators.filter((acc) => acc.side === "left");
     const rightColumnAccs = accelerators.filter((acc) => acc.side === "right");
 
+    const isAutoplayPausedRef = useRef(isAutoplayPaused);
+    const isProgressPausedRef = useRef(isProgressPaused);
+
     useEffect(() => {
-        if (isPaused) return;
+        isAutoplayPausedRef.current = isAutoplayPaused;
+        isProgressPausedRef.current = isProgressPaused;
+    }, [isAutoplayPaused, isProgressPaused]);
+
+    useEffect(() => {
         const interval = setInterval(() => {
-            setSelectedId((prevId) => {
-                const currentIndex = accelerators.findIndex((acc) => acc.id === prevId);
-                const nextIndex = (currentIndex + 1) % accelerators.length;
-                return accelerators[nextIndex].id;
-            });
-        }, 3000);
+            if (isProgressPausedRef.current) return;
+
+            progressRef.current += 1;
+
+            if (progressRef.current >= 100) {
+                if (!isAutoplayPausedRef.current) {
+                    setActiveIndex((curr) => (curr + 1) % accelerators.length);
+                    progressRef.current = 0;
+                    setProgress(0);
+                } else {
+                    progressRef.current = 100;
+                    setProgress(100);
+                }
+            } else {
+                setProgress(progressRef.current);
+            }
+        }, 30);
 
         return () => clearInterval(interval);
-    }, [selectedId, isPaused]);
+    }, []);
 
     return (
         <section className="OurAcceleratorsCardSection py-24 bg-[#F5F7FA] overflow-hidden">
@@ -111,17 +132,24 @@ const OurAcceleratorsCardSection = () => {
 
                     {/* Left Column */}
                     <div className="flex-1 flex flex-col justify-center py-6">
-                        {leftColumnAccs.map((acc) => (
-                            <SideCard
-                                key={acc.id}
-                                accelerator={acc}
-                                isActive={selectedId === acc.id}
-                                onClick={() => setSelectedId(acc.id)}
-                                onMouseEnter={() => setHoveredId(acc.id)}
-                                onMouseLeave={() => setHoveredId(null)}
-                                isPaused={isPaused}
-                            />
-                        ))}
+                        {leftColumnAccs.map((acc) => {
+                            const index = accelerators.findIndex(a => a.id === acc.id);
+                            return (
+                                <SideCard
+                                    key={acc.id}
+                                    accelerator={acc}
+                                    isActive={selectedId === acc.id}
+                                    onClick={() => {
+                                        setActiveIndex(index);
+                                        progressRef.current = 0;
+                                        setProgress(0);
+                                    }}
+                                    onMouseEnter={() => setHoveredId(acc.id)}
+                                    onMouseLeave={() => setHoveredId(null)}
+                                    progress={selectedId === acc.id ? progress : 0}
+                                />
+                            );
+                        })}
                     </div>
 
                     {/* Middle Column */}
@@ -195,17 +223,24 @@ const OurAcceleratorsCardSection = () => {
 
                     {/* Right Column */}
                     <div className="flex-1 flex flex-col justify-center py-6">
-                        {rightColumnAccs.map((acc) => (
-                            <SideCard
-                                key={acc.id}
-                                accelerator={acc}
-                                isActive={selectedId === acc.id}
-                                onClick={() => setSelectedId(acc.id)}
-                                onMouseEnter={() => setHoveredId(acc.id)}
-                                onMouseLeave={() => setHoveredId(null)}
-                                isPaused={isPaused}
-                            />
-                        ))}
+                        {rightColumnAccs.map((acc) => {
+                            const index = accelerators.findIndex(a => a.id === acc.id);
+                            return (
+                                <SideCard
+                                    key={acc.id}
+                                    accelerator={acc}
+                                    isActive={activeIndex === index}
+                                    onClick={() => {
+                                        setActiveIndex(index);
+                                        progressRef.current = 0;
+                                        setProgress(0);
+                                    }}
+                                    onMouseEnter={() => setHoveredId(acc.id)}
+                                    onMouseLeave={() => setHoveredId(null)}
+                                    progress={activeIndex === index ? progress : 0}
+                                />
+                            );
+                        })}
                     </div>
                 </div>
             </div>
@@ -219,14 +254,14 @@ const SideCard = ({
     onClick,
     onMouseEnter,
     onMouseLeave,
-    isPaused,
+    progress,
 }: {
     accelerator: Accelerator;
     isActive: boolean;
     onClick: () => void;
     onMouseEnter: () => void;
     onMouseLeave: () => void;
-    isPaused: boolean;
+    progress: number;
 }) => {
     return (
         <div
@@ -241,11 +276,8 @@ const SideCard = ({
             {/* Vertical Indicator Bar */}
 
             {isActive && (
-                <motion.div
-                    key={`${accelerator.id}-${isPaused}`}
-                    initial={{ height: "0%" }}
-                    animate={isPaused ? { height: "0%" } : { height: "100%" }}
-                    transition={{ duration: 3, ease: "linear" }}
+                <div
+                    style={{ height: `${Math.min(progress, 100)}%` }}
                     className={`absolute z-10 top-0 w-[5px] bg-linear-to-t from-[#4DB151] to-[rgba(77,177,81,0.2)] ${accelerator.side === "left" ? "left-0" : "right-0"
                         }`}
                 />
