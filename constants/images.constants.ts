@@ -11,6 +11,12 @@ export enum IMAGE_URLS {
   GROWING_WORK_FORCE = "/assets/images/home-page/growing-work-force.png",
   VALUED_CLIENTELE = "/assets/images/home-page/valued-clientele.png",
 
+  // our accelerators section
+  SAP_TEST_FRAMEWORK = "/assets/images/home-page/our-accelerators/SAP-Test-Framework.svg",
+  USABILITY_FIRST = "/assets/images/home-page/our-accelerators/Usability-First.svg",
+  PROVEN_BUSINESS_CASES = "/assets/images/home-page/our-accelerators/Proven-Business-Cases.svg",
+  TRUST_WHAT_YOU_SEE = "/assets/images/home-page/our-accelerators/Trust-What-You-See.svg",
+  NO_EXPERIMENTS = "/assets/images/home-page/our-accelerators/No-Experiments.svg",
   AMARON_ICON = "/assets/images/amaron.webp",
   UB_ICON = "/assets/images/UB.webp",
   VGURAD_ICON = "/assets/images/v-gurad.webp",
@@ -25,6 +31,25 @@ export enum IMAGE_URLS {
   OLAM = "/assets/images/client-logo/olam.webp",
   PRICOL = "/assets/images/client-logo/pricol.webp",
   TENNECO = "/assets/images/client-logo/tenneco.webp",
+
+  // our accelerators card section middle images 
+
+  MDS_LOGO = "/assets/images/home-page/our-accelerators-card-section/middle-images/MDS.webp",
+  FSCNXT_LOGO = "/assets/images/home-page/our-accelerators-card-section/middle-images/FSCNxt.webp",
+  VPROC_LOGO = "/assets/images/home-page/our-accelerators-card-section/middle-images/Vproc.webp",
+  VGENEX_LOGO = "/assets/images/home-page/our-accelerators-card-section/middle-images/VGenex.webp",
+  NEXWARE_LOGO = "/assets/images/home-page/our-accelerators-card-section/middle-images/Nexware.webp",
+  BP_CLOUD_LOGO = "/assets/images/home-page/our-accelerators-card-section/middle-images/BpCloud.webp",
+
+  // our accelerators card icons 
+
+  BP_CLOUD_ICON = "/assets/images/home-page/our-accelerators-card-section/BP-Cloud.svg",
+  FSCNXT_ICON = "/assets/images/home-page/our-accelerators-card-section/FSCNxt.svg",
+  MDS_ICON = "/assets/images/home-page/our-accelerators-card-section/MDS.svg",
+  NEXWARE_ICON = "/assets/images/home-page/our-accelerators-card-section/Nexware.svg",
+  VGENEX_ICON = "/assets/images/home-page/our-accelerators-card-section/VGenex.svg",
+  VPROC_ICON = "/assets/images/home-page/our-accelerators-card-section/Vproc.svg",
+
 
   // Banner image
 
@@ -43,3 +68,4 @@ export enum IMAGE_URLS {
   SAP_BUILD = "/assets/images/home-page/Sap-build.svg",
   ISO_CERTIFIED = "/assets/images/home-page/iso-certified.svg",
 }
+
