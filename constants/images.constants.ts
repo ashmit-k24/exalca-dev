@@ -31,5 +31,24 @@ export enum IMAGE_URLS {
   OLAM = "/assets/images/client-logo/olam.webp",
   PRICOL = "/assets/images/client-logo/pricol.webp",
   TENNECO = "/assets/images/client-logo/tenneco.webp",
+
+  // our accelerators card section middle images 
+
+  MDS_LOGO = "/assets/images/home-page/our-accelerators-card-section/MDS-logo.webp",
+
+  // our accelerators card icons 
+
+  BP_CLOUD_ICON = "/assets/images/home-page/our-accelerators-card-section/BP-Cloud.svg",
+  FSCNXT_ICON = "/assets/images/home-page/our-accelerators-card-section/FSCNxt.svg",
+  MDS_ICON = "/assets/images/home-page/our-accelerators-card-section/MDS.svg",
+  NEXWARE_ICON = "/assets/images/home-page/our-accelerators-card-section/Nexware.svg",
+  VGENEX_ICON = "/assets/images/home-page/our-accelerators-card-section/VGenex.svg",
+  VPROC_ICON = "/assets/images/home-page/our-accelerators-card-section/Vproc.svg"
+
+
+
+
+
+
 }
 
