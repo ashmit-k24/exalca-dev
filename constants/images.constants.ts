@@ -25,4 +25,21 @@ export enum IMAGE_URLS {
   OLAM = "/assets/images/client-logo/olam.webp",
   PRICOL = "/assets/images/client-logo/pricol.webp",
   TENNECO = "/assets/images/client-logo/tenneco.webp",
+
+  // Banner image
+
+  BANNER_1 = "/assets/images/home-page/Banner-1.webp",
+  BANNER_2 = "/assets/images/home-page/Banner-2.webp",
+  BANNER_3 = "/assets/images/home-page/Banner-3.webp",
+  BANNER_4 = "/assets/images/home-page/Banner-4.webp",
+
+  SAP_PARTNER_LOGO = "/assets/images/home-page/SAP-partner-logo.svg",
+  SHAPE_ARROW = "/assets/images/home-page/shape-arrow.svg",
+  SCROLL_ICON = "/assets/images/home-page/scroll.gif",
+
+  MICROSOFT_GOLD = "/assets/images/home-page/Microsoft-gold.svg",
+  SAP_CERTIFIED = "/assets/images/home-page/sap-certified.svg",
+  ISO_27001 = "/assets/images/home-page/iso-27001.svg",
+  SAP_BUILD = "/assets/images/home-page/Sap-build.svg",
+  ISO_CERTIFIED = "/assets/images/home-page/iso-certified.svg",
 }
