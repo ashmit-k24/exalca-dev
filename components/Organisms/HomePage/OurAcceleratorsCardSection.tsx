@@ -184,6 +184,7 @@ const OurAcceleratorsCardSection = () => {
                                                             src={selectedAccelerator.logo}
                                                             alt={selectedAccelerator.name}
                                                             fill
+                                                            sizes="w-full"
                                                             className="object-cover"
                                                             priority
                                                         />
