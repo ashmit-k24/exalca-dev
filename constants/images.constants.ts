@@ -42,4 +42,30 @@ export enum IMAGE_URLS {
   ISO_27001 = "/assets/images/home-page/iso-27001.svg",
   SAP_BUILD = "/assets/images/home-page/Sap-build.svg",
   ISO_CERTIFIED = "/assets/images/home-page/iso-certified.svg",
+
+  // about page
+
+  ABOUT_BANNER = "/assets/images/about/about-banner.webp",
+  MISSION_VISION_BG = "/assets/images/about/missionVision.webp",
+
+  MANUFACTURING = "/assets/images/about/Manufacturing.svg",
+  PHARMA = "/assets/images/about/Pharma.svg",
+  AUTOMOBILE = "/assets/images/about/Automobile.svg",
+  POWER_CEMENT = "/assets/images/about/Power-Cement.svg",
+  ENGINEERING = "/assets/images/about/Engineering.svg",
+  AGRO = "/assets/images/about/Agro.webp",
+  FMCG = "/assets/images/about/FMCG.svg",
+
+  INFORMATION_LIFECYCLE = "/assets/images/about/Information-Lifecycle-Management.webp",
+  FINANCIAL_SERVICE = "/assets/images/about/Financial-Services-Automation.webp",
+  SHOP_FLOOR = "/assets/images/about/Shop-Floor-Process-Optimization.webp",
+  PARTNER_COLLABORATION = "/assets/images/about/Partner-Collaboration-Platform.webp",
+  SUPPLY_CHAIN = "/assets/images/about/Supply-Chain-Management.webp",
+
+  INTEGRITY = "/assets/images/about/Integrity.svg",
+  CUSTOMER_SUCCESS = "/assets/images/about/Customer-Sucess.svg",
+  INNOVATION = "/assets/images/about/Innovation.svg",
+  PEOPLE_FIRST = "/assets/images/about/People-First.svg",
+  ACCOUNTABILITY = "/assets/images/about/Accountability.svg",
+  DEVELOP_SELF_TEAM = "/assets/images/about/Develop-Self-Team.svg",
 }
