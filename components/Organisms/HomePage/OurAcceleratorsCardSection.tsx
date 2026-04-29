@@ -106,22 +106,22 @@ const OurAcceleratorsCardSection = () => {
                     </div>
 
                     {/* Middle Column */}
-                    <div className="flex-1 h-full flex justify-center items-center relative">
-                        <AnimatePresence mode="wait" >
+                    <div className="flex-1 flex flex-col relative">
+                        <AnimatePresence mode="wait">
                             <motion.div
                                 key={selectedAccelerator.id}
                                 initial={{ opacity: 0, scale: 0.98 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.98 }}
                                 transition={{ duration: 0.5, ease: "easeInOut" }}
-                                className="relative w-full  h-full max-w-[480px]"
+                                className="relative w-full flex-1 flex flex-col"
                             >
                                 {/* Outer Glow/Shadow effect */}
                                 <div className="absolute -inset-6 bg-white/30 rounded-[48px] blur-2xl -z-10" />
 
-                                <div className="bg-white rounded-[40px]  h-full p-2 shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-white">
+                                <div className="bg-white rounded-[40px] flex-1 flex flex-col p-2 shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-white">
                                     <div
-                                        className="rounded-[36px]  h-full p-12 flex flex-col items-center text-center transition-all duration-1000"
+                                        className="rounded-[36px] flex-1 flex flex-col items-center justify-center p-12 text-center transition-all duration-1000"
                                         style={{ background: selectedAccelerator.gradient }}
                                     >
                                         {/* Podium/Platform Effect */}
