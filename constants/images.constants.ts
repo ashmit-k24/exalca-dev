@@ -67,5 +67,14 @@ export enum IMAGE_URLS {
   ISO_27001 = "/assets/images/home-page/iso-27001.svg",
   SAP_BUILD = "/assets/images/home-page/Sap-build.svg",
   ISO_CERTIFIED = "/assets/images/home-page/iso-certified.svg",
+
+  // Our Portfolio
+  PORTFOLIO_AMS = "/assets/images/home-page/our-portfolio/AMS.webp",
+  PORTFOLIO_BTS = "/assets/images/home-page/our-portfolio/Business-Transformation-Services.webp",
+  PORTFOLIO_CPI = "/assets/images/home-page/our-portfolio/CPI.webp",
+  PORTFOLIO_CUSTOM_DEV = "/assets/images/home-page/our-portfolio/Custom-Development.webp",
+  PORTFOLIO_MDAAS = "/assets/images/home-page/our-portfolio/MDAAS.webp",
+  PORTFOLIO_RAPID_DEPLOY = "/assets/images/home-page/our-portfolio/Rapid-Deployment.webp",
+  PORTFOLIO_STAFF_AUG = "/assets/images/home-page/our-portfolio/Staff-Augmentation.webp",
 }
 

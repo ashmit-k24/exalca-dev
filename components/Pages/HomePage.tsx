@@ -7,6 +7,7 @@ import OurAcceleratorsCardSection from "../Organisms/HomePage/OurAcceleratorsCar
 import HeroBanner from "../Molecules/HeroBanner/HeroBanner";
 import AboutUs from "../Molecules/AboutUs/AboutUs";
 import Accreditations from "../Molecules/Accreditations/Accreditations";
+import OurPortfolio from "../Organisms/HomePage/OurPortfolio";
 
 const HomePage = () => {
   return (
@@ -17,6 +18,7 @@ const HomePage = () => {
       <OurExcellence />
       <OurAccelerators />
       <OurAcceleratorsCardSection />
+      <OurPortfolio />
       <OurAccolades />
       <ClientLogo />
     </>
