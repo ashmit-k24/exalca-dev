@@ -3,7 +3,7 @@ export enum IMAGE_URLS {
   EXALCA_FOOTER_LOGO = "/assets/images/exclca-footer-logo.svg",
   OVETLAY_FOOTER_LOGO = "/assets/images/overlay-logo.svg",
 
-  // our excellence section 
+  // our excellence section
   OUR_EXCELLENCE_BG_ELEMENTS = "/assets/images/home-page/our-excellence-bg-elements.png",
 
   PROJECTS_DELIVERED = "/assets/images/home-page/projects-delivered.png",
@@ -11,4 +11,18 @@ export enum IMAGE_URLS {
   GROWING_WORK_FORCE = "/assets/images/home-page/growing-work-force.png",
   VALUED_CLIENTELE = "/assets/images/home-page/valued-clientele.png",
 
+  AMARON_ICON = "/assets/images/amaron.webp",
+  UB_ICON = "/assets/images/UB.webp",
+  VGURAD_ICON = "/assets/images/v-gurad.webp",
+  PANASONIC_ICON = "/assets/images/panasonic.webp",
+
+  // clientLogo
+  ARICENT = "/assets/images/client-logo/Aricent.webp",
+  ESSEL = "/assets/images/client-logo/essel.webp",
+  GAAR = "/assets/images/client-logo/gaar.webp",
+  INDOFIL = "/assets/images/client-logo/indofil.webp",
+  NILKAMAL = "/assets/images/client-logo/nilkamal.webp",
+  OLAM = "/assets/images/client-logo/olam.webp",
+  PRICOL = "/assets/images/client-logo/pricol.webp",
+  TENNECO = "/assets/images/client-logo/tenneco.webp",
 }
