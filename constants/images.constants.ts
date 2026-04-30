@@ -109,5 +109,15 @@ export enum IMAGE_URLS {
 
   CONTACT_US_BANNER = "/assets/images/contact-us/contact-us-banner.webp",
 
-  CUSTOM_DEVELOPMENT = "/"
+  CUSTOM_DEVELOPMENT = "/assets/images/contact-us/connect-us/Custom-development.svg",
+  REQUEST_FOR_SOLUTION = "/assets/images/contact-us/connect-us/Request-for-solution.svg",
+  RESOURCES = "/assets/images/contact-us/connect-us/Resources.svg",
+  CONNECT_BG_ELEMENT = "/assets/images/contact-us/connect-us/connect-bg-element.svg",
+
+  // contact us - looking for something else section 
+
+  CSR_OBJECT = "/assets/images/contact-us/looking-for-something-else/csr-object.svg",
+  LOOKING_FOR_SOMETHING_BG = "/assets/images/contact-us/looking-for-something-else/looking-for-something-bg.svg",
+  PARTNERSHIP = "/assets/images/contact-us/looking-for-something-else/partnership.svg",
+  WEBSITE_FEEDBACK = "/assets/images/contact-us/looking-for-something-else/website-feedback.svg",
 }
