@@ -100,4 +100,8 @@ export enum IMAGE_URLS {
   PORTFOLIO_MDAAS = "/assets/images/home-page/our-portfolio/MDAAS.webp",
   PORTFOLIO_RAPID_DEPLOY = "/assets/images/home-page/our-portfolio/Rapid-Deployment.webp",
   PORTFOLIO_STAFF_AUG = "/assets/images/home-page/our-portfolio/Staff-Augmentation.webp",
+
+  // Career page
+
+  CAREER_BANNER = "/assets/images/career/career-banner.webp",
 }

@@ -1,12 +1,12 @@
 import React from "react";
 
-interface AboutBannerProps {
+interface PageBannerProps {
   image: string;
   title: string;
   description: string;
 }
 
-const AboutBanner = ({ image, title, description }: AboutBannerProps) => {
+const PageBanner = ({ image, title, description }: PageBannerProps) => {
   return (
     <section
       className="bg-no-repeat bg-center bg-cover h-[300px] md:h-[400px] lg:h-[440px] flex items-center"
@@ -28,4 +28,4 @@ const AboutBanner = ({ image, title, description }: AboutBannerProps) => {
   );
 };
 
-export default AboutBanner;
+export default PageBanner;
