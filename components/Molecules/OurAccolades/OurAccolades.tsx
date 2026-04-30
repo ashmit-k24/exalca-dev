@@ -97,9 +97,9 @@ const OurAccolades = () => {
                     <Image
                       src={item.logo}
                       alt={`${item.author} company`}
-                      fill
-                      sizes="100vw"
-                      className="object-cover"
+                      width={96}
+                      height={96}
+                      className="object-cover w-full h-full"
                     />
                   </div>
 
