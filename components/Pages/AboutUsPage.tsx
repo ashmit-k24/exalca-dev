@@ -1,5 +1,5 @@
 import React from "react";
-import AboutBanner from "../Molecules/AboutBanner/AboutBanner";
+import AboutBanner from "../Molecules/PageBanner/PageBanner";
 import { IMAGE_URLS } from "@/constants/images.constants";
 import AboutUs from "../Molecules/AboutUs/AboutUs";
 import MissionVission from "../Molecules/MissionVission/MissionVission";

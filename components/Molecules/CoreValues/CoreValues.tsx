@@ -56,7 +56,7 @@ const CoreValues = ({
   title = "Core Values",
 }: CoreValuesProps) => {
   return (
-    <section className="sec_padding bg-[#F9FBFF]">
+    <section className="sec_padding bg-[#F5F7FA]">
       <div className="container">
         <div className="flex flex-col items-center justify-center mb-16">
           <PillsHeading text={pillsTitle} />
