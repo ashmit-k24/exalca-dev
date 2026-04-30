@@ -98,6 +98,7 @@ const OurAccolades = () => {
                       src={item.logo}
                       alt={`${item.author} company`}
                       fill
+                      sizes="100vw"
                       className="object-cover"
                     />
                   </div>
