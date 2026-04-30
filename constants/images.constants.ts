@@ -104,4 +104,10 @@ export enum IMAGE_URLS {
   // Career page
 
   CAREER_BANNER = "/assets/images/career/career-banner.webp",
+
+  // Contact us page
+
+  CONTACT_US_BANNER = "/assets/images/contact-us/contact-us-banner.webp",
+
+  CUSTOM_DEVELOPMENT = "/"
 }

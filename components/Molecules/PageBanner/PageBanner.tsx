@@ -17,10 +17,8 @@ const PageBanner = ({ image, title, description }: PageBannerProps) => {
       }}
     >
       <div className="container">
-        <div className="w-full lg:w-6/12 xl:w-6/12">
-          <h1 className="section-title-h2 font-semibold text-gradient mb-6">
-            {title}
-          </h1>
+        <div className="w-full lg:w-6/12 xl:w-7/12">
+          <h1 className="section-title-h2 font-semibold text-gradient mb-6" dangerouslySetInnerHTML={{__html:title}}/>
           <p className="text-base md:text-lg text-[#232323]">{description}</p>
         </div>
       </div>
