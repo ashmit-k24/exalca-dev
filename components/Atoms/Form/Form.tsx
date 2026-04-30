@@ -188,7 +188,6 @@ export const FormCheckbox = ({
     label,
     description,
     error,
-    required,
     containerClassName,
     className,
     checked,
